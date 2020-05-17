@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>{$config["appName"]}</title>
+    <title>{$config['appName']}</title>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
     <meta charset="utf-8"/>
@@ -32,7 +32,7 @@
     <p>MIT许可证（MIT）</p>
 
     <p class="copyright">&copy;2015 orvice</p>
-    <p class="copyright">&copy;2019 SSPanel UIM Dev Team</p>
+    <p class="copyright">&copy;{date("Y")} SSPanel UIM Dev Team</p>
 
     <p>特此免费授予任何获得副本的人这个软件和相关的文档文件（“软件”）来处理在软件中没有限制，
         包括但不限于权利使用，复制，修改，合并，发布，分发，再许可和/或销售该软件的副本，
@@ -64,12 +64,6 @@
                             href="https://github.com/xcxnig">Miku</a>，<a href="https://github.com/ZJY2003">Tony Zou</a>，<a
                             href="https://github.com/laurieryayoi">Nymph</a></td>
             </tr>
-
-            <tr>
-                <td>基于 UIM 修改版</td>
-                <td>GeekQu，Rico</td>
-            </tr>
-
             <tr>
                 <td>监督</td>
                 <td><a href="https://github.com/Talocan">Anankke</a></td>
@@ -108,7 +102,7 @@
 
     <!-- 版权底部 -->
     <footer id="footer">
-        <p class="copyright">&copy;2015-2018 v20200130 {$config["appName"]}</p>
+        <p class="copyright">&copy;2015-{date('Y')} {$config['appName']}</p>
     </footer>
     <!-- 版权结束 -->
 </div>

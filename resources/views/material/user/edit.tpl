@@ -10,7 +10,7 @@
         <section class="content-inner margin-top-no">
 
             <div class="col-xx-12 col-sm-6">
-            
+
                 <div class="card margin-bottom-no">
                     <div class="card-main">
                         <div class="card-inner">
@@ -38,42 +38,6 @@
                     </div>
                 </div>
 
-
-
-{if $config['protocol_specify']===false}
-				<div class="card margin-bottom-no">
-					<div class="card-main">
-						<div class="card-inner">
-							<div class="card-inner">
-								<div class="cardbtn-edit">
-
-									<div class="card-heading">切换协议配置</div>
-									<button class="btn btn-flat" id="user_agreement_scheme-update"><span class="icon">check</span>&nbsp;</button>
-								</div>
-								<p>当前配置：
-								{foreach $schemes as $scheme}
-									{if $scheme['method'] == $user->method && $scheme['protocol'] == $user->protocol && $scheme['obfs'] == $user->obfs}
-										<code>{$scheme['name']}</code>
-									{/if}
-								{/foreach}
-								</p>
-								<div class="form-group form-group-label control-highlight-custom dropdown">
-									<button id="agreement_scheme" type="button" class="form-control maxwidth-edit" data-toggle="dropdown" value="0">请选择配置方案</button>
-									<ul class="dropdown-menu" aria-labelledby="agreement_scheme">
-									{foreach $schemes as $scheme}
-										<li><a href="#" class="dropdown-option" onclick="return false;" val="{$scheme['id']}" data="agreement_scheme">{$scheme['name']}</a></li>
-									{/foreach}
-									</ul>
-								</div>
-
-							</div>
-						</div>
-					</div>
-
-                </div>
-
-
-{else}
 
                 <div class="card margin-bottom-no">
                     <div class="card-main">
@@ -169,7 +133,6 @@
                         </div>
                     </div>
                 </div>
-{/if}
 
 				<div class="card margin-bottom-no">
 					<div class="card-main">
@@ -242,21 +205,26 @@
                         <div class="card-inner">
                             <div class="card-inner">
                                 <div class="cardbtn-edit">
-                                    <div class="card-heading">每日邮件接收设置</div>
+                                    <div class="card-heading">每日使用报告设置</div>
                                     <button class="btn btn-flat" id="mail-update"><span class="icon">check</span>&nbsp;
                                     </button>
                                 </div>
                                 <p class="card-heading"></p>
-                                <p>当前设置：<code id="ajax-mail" data-default="mail">{if $user->sendDailyMail==1}发送{else}不发送{/if}</code></p>
+                                <p>当前设置：<code id="ajax-mail" data-default="mail">{if $user->sendDailyMail == 2}TelegramBot接收{elseif $user->sendDailyMail == 1}邮件接收{else}不发送{/if}</code></p>
                                 <div class="form-group form-group-label control-highlight-custom dropdown">
-                                    <label class="floating-label" for="mail">发送设置</label>
+                                    <label class="floating-label" for="mail">接收设置</label>
                                     <button type="button" id="mail" class="form-control maxwidth-edit"
                                             data-toggle="dropdown" value="{$user->sendDailyMail}"></button>
                                     <ul class="dropdown-menu" aria-labelledby="mail">
-                                        <li><a href="#" class="dropdown-option" onclick="return false;" val="1"
-                                               data="mail">发送</a></li>
-                                        <li><a href="#" class="dropdown-option" onclick="return false;" val="0"
-                                               data="mail">不发送</a></li>
+                                        <li>
+                                            <a href="#" class="dropdown-option" onclick="return false;" val="0" data="mail">不发送</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="dropdown-option" onclick="return false;" val="1" data="mail">邮件接收</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="dropdown-option" onclick="return false;" val="2" data="mail">TelegramBot接收</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -416,7 +384,7 @@
                             <div class="card-inner">
                                 <div class="card-inner">
                                     <div class="cardbtn-edit">
-                                        <div class="card-heading">Telegram 绑定</div>                                    
+                                        <div class="card-heading">Telegram 绑定</div>
                                     {if $user->telegram_id != 0}
                                         <div><a class="btn btn-flat btn-brand-accent" href="/user/telegram_reset"><span class="icon">not_interested</span>&nbsp;</a></div>
                                     </div>
@@ -874,7 +842,7 @@
         })
     })
 </script>
-
+{/literal}
 <script>
     $(document).ready(function () {
         $("#mail-update").click(function () {
@@ -888,22 +856,24 @@
                 success: (data) => {
                     if (data.ret) {
                         $("#result").modal();
-                        $$.getElementById('ajax-mail').innerHTML = ($$getValue('mail') === '1') ? '发送' : '不发送'
                         $$.getElementById('msg').innerHTML = data.msg;
+                        window.setTimeout("location.href='/user/edit'", {$config['jump_delay']});
                     } else {
                         $("#result").modal();
                         $$.getElementById('msg').innerHTML = data.msg;
                     }
                 },
+                {literal}
                 error: (jqXHR) => {
                     $("#result").modal();
                     $$.getElementById('msg').innerHTML = `${data.msg} 出现了一些错误`;
                 }
+                {/literal}
             })
         })
     })
 </script>
-{/literal}
+
 <script>
     $(document).ready(function () {
         $("#theme-update").click(function () {
@@ -979,36 +949,3 @@
         window.setTimeout("location.href='/user/url_reset'", {$config['jump_delay']});
     });
 </script>
-
-<script>
-    $(document).ready(function () {
-        $("#user_agreement_scheme-update").click(function () {
-            $.ajax({
-                type: "POST",
-                url: "switchtype",
-                dataType: "json",
-                data: {
-                    id: $("#agreement_scheme").val()
-                },
-                success: (data) => {
-                    if (data.ret) {
-                        $("#result").modal();
-                        $$.getElementById('msg').innerHTML = data.msg;
-                        window.setTimeout("location.href='/user/edit'", {$config['jump_delay']});
-                    } else {
-                        $("#result").modal();
-                        $$.getElementById('msg').innerHTML = data.msg;
-                    }
-                },
-                error: (jqXHR) => {
-                    $("#result").modal();
-                    $$.getElementById('msg').innerHTML = `${
-                            data.msg
-                            } 出现了一些错误`;
-                }
-            })
-        })
-    })
-</script>
-
-

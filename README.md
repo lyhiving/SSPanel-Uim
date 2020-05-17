@@ -12,15 +12,11 @@
 [![Telegram Channel](https://img.shields.io/badge/news-t.me%2Fsspanel_uim-0d86d7?style=flat-square)](https://t.me/sspanel_uim)
 [![Telegram Chat](https://img.shields.io/badge/chat-t.me%2Fssunion-0d86d7?style=flat-square)](https://t.me/ssunion)
 
-[演示站点](https://sspanel.host) | [使用文档](https://wiki.sspanel.host) | [更新日志](https://github.com/Anankke/SSPanel-Uim/releases) | [Telegram 频道](https://t.me/sspanel_uim) | [Telegram 水群](https://t.me/ssunion)
+[演示站点](https://sspanel.host) | [使用文档](https://wiki.sspanel.host) | [更新日志](https://github.com/Anankke/SSPanel-Uim/releases) | [配套SS/SSR后端](https://github.com/Anankke/shadowsocks-mod) | [Telegram 频道](https://t.me/sspanel_uim) | [Telegram 水群](https://t.me/ssunion) | [API 文档](https://sspanel-uim.github.io/API-documents/)
 
 ## 简介
 
 SSPanel UIM 是一款专为 Shadowsocks / ShadowsocksR / V2Ray 设计的多用户管理面板，基于 ss-panel-v3-mod 开发。
-
-## AD
-
-**特别优惠 Malio SSPANEL 主题 + Rico V2Ray 后端，现在只需 144 usdt，👉[查看详情](https://malio.fxxkmy.life/)**
 
 ## 特性
 
@@ -76,9 +72,9 @@ SSPanel UIM 使用 MIT License 开源、不提供任何担保。使用 SSPanel U
 
 ## 鸣谢
 
-### [HKServerSolution](https://www.hkserversolution.com/cart.php)
+### [HKServerSolution](https://www.hkserversolution.com/aff.php?aff=53)
 
-Demo 演示站服务器赞助。
+Demo 演示站由 HKServerSolution 高性能服务器赞助。
 
 ### [贡献者](https://github.com/Anankke/SSPanel-Uim/graphs/contributors)
 
@@ -158,7 +154,7 @@ SSPanel UIM 离不开所有 [贡献代码](https://github.com/Anankke/SSPanel-Ui
 
 #### Anankke
 
-- [Anankke 很可爱请给 Anankke 钱](https://t.me/anankke/5)
+- [Anankke 很可爱请给 Anankke 钱](https://t.me/anankke/7)
 
 #### dumplin
 
@@ -167,9 +163,9 @@ SSPanel UIM 离不开所有 [贡献代码](https://github.com/Anankke/SSPanel-Ui
 #### galaxychuck
 
 - [hkserversolution-推荐UIM面板服务器放置](https://www.hkserversolution.com/aff.php?aff=60)
-- [moecloud-美國VPS](https://moecloud.asia/aff.php?aff=56)
+- [moecloud-美國VPS](https://lite.moe/aff.php?aff=56)
 
 #### laurieryayoi
 
-[laurieryayoi 的前端课程报名](https://t.me/kinokonominoco)
+[dmit-美国香港服务器](https://www.dmit.io/aff.php?aff=912)
 

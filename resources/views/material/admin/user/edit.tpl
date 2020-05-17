@@ -11,22 +11,6 @@
         <div class="col-lg-12 col-sm-12">
             <section class="content-inner margin-top-no">
 
-                {if $config['enable_sub_cache']===true}
-                <div class="card">
-                    <div class="card-main">
-                        <div class="card-inner">
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-10 col-md-push-1">
-                                        <a class="btn btn-block btn-brand waves-attach waves-light" href="/admin/user/{$edit_user->id}/cleanSubCache">清空订阅缓存</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {/if}
-
                 <div class="card">
                     <div class="card-main">
                         <div class="card-inner">
@@ -125,7 +109,7 @@
                             <div class="form-group form-group-label">
                                 <label class="floating-label" for="detect_ban_number">累计封禁次数</label>
                                 <input class="form-control maxwidth-edit" id="detect_ban_number" type="text"
-                                       value="{if $edit_user->detect_ban_number()==0}好耶！标杆用户，没有被审计封禁过耶{else}太坏了，这位用户累计被封禁过 {$edit_user->detect_ban_number()} 次呢{/if}" readonly>
+                                       value="{if $edit_user->detect_ban_number()==0}标杆用户，没有被封禁过耶{else}太坏了，这位用户累计被封禁过 {$edit_user->detect_ban_number()} 次呢{/if}" readonly>
                             </div>
 
                             <div class="form-group form-group-label">
@@ -136,7 +120,7 @@
 
 						</div>
 					</div>
-				</div>	
+				</div>
 
                 <div class="card">
                     <div class="card-main">
@@ -426,7 +410,9 @@
         }
 
         $("html").keydown(event => {
-            if (event.keyCode == 13) login();
+            if (event.keyCode == 13) {
+                submit();
+            }
         });
 
         $$.getElementById('submit').addEventListener('click', submit);

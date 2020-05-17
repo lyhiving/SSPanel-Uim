@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta charset="UTF-8">
-  <title>{$appName}</title>
+  <title>{$config['documents_name']}</title>
   <link rel="stylesheet" href="//unpkg.com/docsify/themes/vue.css">
 </head>
 <body>
@@ -24,11 +24,11 @@
   <script>
     const root = window.location.host;
     window.$docsify = {
-      name: '{$appName}',
+      name: '{$config['documents_name']}',
       alias: {
             '/.*/_sidebar.md': '/_sidebar.md'
       },
-      basePath: '{$basePath}',
+      basePath: '{if $config['remote_documents'] === true}{$config['documents_source']}{else}/docs/SSPanel{/if}',
       auto2top: true,
       loadSidebar: true,
       autoHeader: true,

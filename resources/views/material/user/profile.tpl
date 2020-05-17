@@ -51,8 +51,8 @@
                                         <table class="table">
                                             <thead>
                                             <tr>
-                                                <th>#ID</th>
-                                                <th>套餐名称</th>
+                                              	<th>#ID</th>
+                                              	<th>套餐名称</th>
                                               	<th>已用天数</th>
                                               	<th>下次流量重置时间</th>
                                               	<th>套餐过期时间</th>
@@ -64,9 +64,9 @@
                                                 <tr>
                                                     <td>#{$bought->id}</td>
                                                     <td>{$bought->shop()->name}</td>
-                                                  	<td>{$bought->used_days()} 天</td>
-                                                  	<td>{$bought->reset_time()}</td>
-                                                  	<td>{$bought->exp_time()}</td>
+                                                    <td>{$bought->used_days()} 天</td>
+                                                    <td>{$bought->reset_time()}</td>
+                                                    <td>{$bought->exp_time()}</td>
                                                 </tr>
                                           		{/if}
                                           	{/foreach}
@@ -134,49 +134,6 @@
                                                 </tr>
                                             {/foreach}
                                         </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12">
-                    <div class="card">
-                        <div class="card-main">
-                            <div class="card-inner">
-                                <div class="card-doubleinner">
-                                    <p class="card-heading">返利记录</p>
-                                </div>
-
-                                <div class="card-table">
-                                    <div class="table-responsive table-user">
-                                        {$paybacks->render()}
-                                        <table class="table">
-                                            <thead>
-                                            <tr>
-                                                <th>###</th>
-                                                <th>返利用户</th>
-                                                <th>返利金额</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            {foreach $paybacks as $payback}
-                                                <tr>
-                                                    <td><b>{$payback->id}</b></td>
-                                                    {if $payback->user()!=null}
-                                                        <td>{$payback->user()->user_name}
-                                                        </td>
-                                                    {else}
-                                                        <td>已注销
-                                                        </td>
-                                                    {/if}
-                                                    </td>
-                                                    <td>{$payback->ref_get} 元</td>
-                                                </tr>
-                                            {/foreach}
-                                            </tbody>
-                                        </table>
-                                        {$paybacks->render()}
                                     </div>
                                 </div>
                             </div>
